@@ -29,6 +29,7 @@
     "neos/flow-development-collection": "9.0.x-dev",
     "neos/eventstore": "dev-main",
     "neos/eventstore-doctrineadapter": "dev-main",
+    "neos/contentrepositoryregistry-doctrinedbalclient": "9.0.x-dev",
     "neos/demo": "@dev",
     "neos/neos-ui": "9.0.x-dev",
     "neos/neos-ui-compiled": "@dev",
