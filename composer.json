@@ -11,7 +11,6 @@
     "docs": "http://neos.readthedocs.io/",
     "source": "https://github.com/neos/neos-development-distribution"
   },
-  "version": "9.0.x-dev",
   "config": {
     "vendor-dir": "Packages/Libraries",
     "bin-dir": "bin",
