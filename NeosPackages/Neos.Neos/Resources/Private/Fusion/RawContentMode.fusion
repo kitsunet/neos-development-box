@@ -1,0 +1,3 @@
+include: RawContent/*.fusion
+
+rawContent = Neos.Neos:RawContent.Document

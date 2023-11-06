@@ -1,0 +1,17 @@
+.sass-cache
+.DS_Store
+/Tests/Behavior/behat.yml
+/Resources/Public/Styles/Error.css
+/Resources/Public/Styles/Login.css
+/Resources/Public/Styles/RawContentMode.css
+
+#
+# Application & development dependencies.
+#
+node_modules/
+
+#
+# editors / IDEs
+#
+.vscode/
+.idea/

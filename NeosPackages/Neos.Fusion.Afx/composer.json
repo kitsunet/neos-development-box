@@ -1,0 +1,36 @@
+{
+  "name": "neos/fusion-afx",
+  "description": "JSX inspired compact syntax for Neos.Fusion",
+  "support": {
+    "source": "https://github.com/neos/fusion-afx.git",
+    "forum": "https://discuss.neos.io/",
+    "docs": "https://docs.neos.io/"
+  },
+  "type": "neos-package",
+  "license": "GPL-3.0-or-later",
+  "replace": {
+    "packagefactory/atomicfusion-afx": "*"
+  },
+  "require": {
+    "php": "^8.0",
+    "neos/fusion": "self.version"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Neos\\Fusion\\Afx\\": "Classes"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Neos\\Fusion\\Afx\\Tests\\": "Tests"
+    }
+  },
+  "extra": {
+    "neos": {
+      "package-key": "Neos.Fusion.Afx"
+    }
+  }
+}

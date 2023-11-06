@@ -1,0 +1,8 @@
+include: resource://Neos.Fusion/Private/Fusion/Root.fusion
+include: ../Prototypes/ErrorPage.fusion
+include: Views/*.fusion
+
+Neos.Fusion.FusionParserException = Neos.Neos:Error.View.FusionParserException {
+  exception = ${exception}
+  flowPathRoot = ${flowPathRoot}
+}

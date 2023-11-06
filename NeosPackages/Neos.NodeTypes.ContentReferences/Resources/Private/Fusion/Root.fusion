@@ -1,0 +1,31 @@
+# "Insert content references" Fusion Object
+prototype(Neos.NodeTypes.ContentReferences:ContentReferences) < prototype(Neos.Neos:Content) {
+  templatePath = 'resource://Neos.NodeTypes.ContentReferences/Private/Templates/NodeTypes/ContentReferences.html'
+  @context.referenceNodesArray = ${q(node).property('references')}
+  referenceNodes = Neos.Fusion:Loop {
+    items = ${referenceNodesArray}
+    itemRenderer = Neos.Neos:ContentCase
+    itemName = 'node'
+
+    // Disable ContentElementWrapping for references itself
+    prototype(Neos.Neos:ContentElementWrapping) {
+      @if.render = false
+    }
+    // Disable InlineEditable for references itself
+    prototype(Neos.Neos:Editable) {
+      renderer.editable.condition = false
+    }
+  }
+  hasReferences = ${!!referenceNodesArray}
+  @cache {
+    mode = 'cached'
+    entryIdentifier {
+      node = ${Neos.Caching.entryIdentifierForNode(node)}
+    }
+    entryTags {
+      1 = ${Neos.Caching.nodeTag(node)}
+      2 = ${Neos.Caching.nodeTag(referenceNodesArray)}
+      3 = ${Neos.Caching.descendantOfTag(referenceNodesArray)}
+    }
+  }
+}

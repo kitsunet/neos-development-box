@@ -1,0 +1,18 @@
+#                                                                        #
+# "Frontend" subroutes configuration for the Neos.Neos package          #
+#                                                                        #
+
+-
+  name:          'Preview'
+  uriPattern:    'neos/preview'
+  defaults:
+    '@action':   'preview'
+  appendExceedingArguments: true
+
+-
+  name: 'Default Frontend'
+  uriPattern: '{node}'
+  routeParts:
+    'node':
+      handler: 'Neos\Neos\FrontendRouting\FrontendNodeRoutePartHandlerInterface'
+  appendExceedingArguments: true

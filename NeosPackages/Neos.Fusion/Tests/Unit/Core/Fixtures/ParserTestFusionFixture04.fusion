@@ -1,0 +1,26 @@
+/**
+ *  Fusion Fixture 04
+ *
+ *  This fixture serves for testing the parsing of content object arrays / cobjects with array capabilities
+ *
+ */
+
+myArrayObject = Neos.Fusion:ContentArray
+
+myArrayObject.10 = Neos.Fusion:Text
+myArrayObject.10.value = "Hello "
+
+// stuff which starts with "@" is a meta property
+myArrayObject.10.@position = "after 10"
+
+myArrayObject.20 = Neos.Fusion:Text
+myArrayObject.20.value = "world!"
+
+myArrayObject.30 = Neos.Fusion:ContentArray
+myArrayObject.30.20 = Neos.Fusion:ContentArray
+myArrayObject.30.20.10 = Neos.Fusion:Text
+myArrayObject.30.20.10.value = "Huh?"
+
+anotherObject.sub1.sub2.sub3 = Neos.Fusion:ContentArray
+anotherObject.sub1.sub2.sub3.1 = Neos.Fusion:Text
+anotherObject.sub1.sub2.sub3.1.value = "Yawn"

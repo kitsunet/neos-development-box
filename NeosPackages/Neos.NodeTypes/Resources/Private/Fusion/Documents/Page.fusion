@@ -1,0 +1,9 @@
+prototype(Neos.NodeTypes:Page) < prototype(Neos.Neos:Page) {
+    body {
+        content {
+            main = Neos.Neos:ContentCollection {
+                nodePath = 'main'
+            }
+        }
+    }
+}

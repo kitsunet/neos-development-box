@@ -1,0 +1,73 @@
+# The root matcher used to start rendering in Neos
+#
+# The default is to use a render path of "page", unless the requested format is not "html"
+# in which case the format string will be used as the render path (with dots replaced by slashes)
+#
+root = Neos.Fusion:Case
+root {
+  shortcut {
+    # this code path will only be taken for backend views, as the node controller
+    # will take care of resolving the shortcut in the frontend
+    @position = 'start'
+    condition = ${q(node).is('[instanceof Neos.Neos:Shortcut]')}
+    renderer = Neos.Neos:Shortcut
+  }
+
+  editPreviewMode {
+    @position = 'end 9996'
+    condition = ${(renderingMode.isEdit || renderingMode.isPreview) && renderingMode.fusionPath}
+    renderPath = ${'/' + renderingMode.fusionPath}
+  }
+
+  format {
+    @position = 'end 9997'
+    condition = ${request.format != 'html'}
+    renderPath = ${'/' + String.replace(request.format, '.', '/')}
+  }
+
+  documentType {
+    @position = 'end 9998'
+    condition = Neos.Fusion:CanRender {
+      type = ${documentNode.nodeTypeName.value}
+    }
+    type = ${documentNode.nodeTypeName.value}
+  }
+
+  default {
+    @position = 'end 9999'
+    condition = Neos.Fusion:CanRender {
+      path = '/page'
+    }
+    renderPath = '/page'
+  }
+
+  rawContent {
+    @position = 'end 10000'
+    condition = ${renderingMode.isEdit}
+    renderPath = '/rawContent'
+  }
+
+  # Fail but create a helpful error message
+  error {
+    @position = 'end 10001'
+    condition = true
+    type = ${documentNode.nodeTypeName.value}
+  }
+
+  @cache {
+    mode = 'cached'
+
+    entryIdentifier {
+      node = ${Neos.Caching.entryIdentifierForNode(node)}
+    }
+    entryTags {
+      # Whenever the node changes the matched condition could change
+      1 = ${Neos.Caching.nodeTag(documentNode)}
+      # Whenever one of the parent nodes changes the layout could change
+      2 = ${Neos.Caching.nodeTag(q(documentNode).parents())}
+    }
+  }
+
+  # Catch all unhandled exceptions at the root
+  @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\PageHandler'
+}

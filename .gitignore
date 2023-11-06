@@ -1,0 +1,31 @@
+/Build/Behat/*
+/Build/PhpCodesniffer/*
+/Build/BuildEssentials
+/Build/Reports
+/Build/Resources
+/Configuration/*
+/Data/
+/DistributionPackages/*
+!/DistributionPackages/.gitkeep
+/Packages/
+/Web/
+/bin/
+/Readme.txt
+/Upgrading.txt
+/Upgrading.rst
+/flow
+/flow.bat
+
+# ingore for dev distribution
+/composer.lock
+
+# is put in place by composer install, so ignore it
+.editorconfig
+
+# Dev Docker Settings
+!/Configuration/Development
+/Configuration/Development/*
+!/Configuration/Development/Docker
+
+# cache
+/tmp/
